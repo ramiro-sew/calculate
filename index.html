@@ -1,0 +1,356 @@
+<html>
+  <head>
+    <div style="text-align: center">
+			<meta charset="UTF-8">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/SEW_LOGO.svg/2000px-SEW_LOGO.svg.png" alt="" class="rounded mx-auto d-block sew-logo">
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+			<link rel="stylesheet" href="./public/css/style.css">
+			<script src="./public/js/calculates.js"></script>
+    </div>
+  </head>
+  <body>
+    <div class="container show-top-margin separate-rows tall-rows">
+      <!-- Tabla inicio-->
+      <div class="col-xl-12" style="text-align: center;">
+        <h1>HOJA DE CÁLCULOS Línea Compact</h1>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td>Tipo:</td>
+              <td><input type="text" name="tipo"><br></td>
+            </tr>
+            <tr>
+              <td>Equipo N° Serie:</td>
+              <td><input type="number" name="serie"><br></td>
+            </tr>
+            <tr>
+              <td>Ensamblador:</td>
+              <td><input type="text" name="ensamblador"><br></td>
+            </tr>
+            <tr>
+              <td>Fecha:</td>
+              <td><input type="date" name="fecha"><br></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-xl-1">
+
+        </div>
+        <div class="col-xl-5">
+          <!-- Tabla tolerancia C1 -->
+          <table class="table table-bordered">
+            <thead>                            
+              <!-- Parte 1-->
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Tolerancias</th>
+                <th style="text-align: center;">Fuerza utilizando torquimetro</th>
+              </tr>
+              <tr>
+                <th style="text-align: center;">C1=</th>
+                <th style="text-align: center;"><input type="number" id="E1" name="E1" value=0 onchange="PromedioUno(); RodamientoUno(); DiferenciaUno(); FunA1(); DiferenciaDos(); C1();" style="width: 40%;">/<input type="number" id="E2" name="E2" value=0 onchange="PromedioUno(); RodamientoUno(); DiferenciaUno(); FunA1(); DiferenciaDos(); C1();" style="width: 40%;"><br><b>Promedio = </b><span id="P1">0</span></th>
+                <th style="text-align: center;">Digite el rodamiento:<br><input type="text" id="rodamiento1" name="rodamiento1" value=0 onchange="PromedioUno(); RodamientoUno(); DiferenciaUno(); FunA1(); DiferenciaDos(); C1();"style="width: 50%; text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();"></th>
+              </tr>
+              <tr>
+                <th></th>
+                <th style="text-align: center">Seleccione el tornillo:<select class=" form-select" id="prueba1" name="prueba1" style="width:100%;" onchange="PromedioUno(); RodamientoUno(); DiferenciaUno(); FunA1(); DiferenciaDos(); C1();">
+                  <option>M12</option>
+                  <option>M16</option>
+                </select></th>
+                <th style="text-align: center;">Puntos de apoyo<select class=" form-select" id="apoyo1" name="apoyo1" style="width:100%;" onchange="PromedioUno(); RodamientoUno(); DiferenciaUno(); FunA1(); DiferenciaDos(); C1();">
+                  <option>2</option>
+                  <option>3</option>
+                </select></th>
+              </tr>
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Fuerza = <span id="R1">0</span></th>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Parte 2-->
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Medición Herat. De ajuste o Profundimetro</td>
+                <td style="text-align: center;"><input type="number" id="E3" name="E3" value=0 onchange="PromedioUno(); RodamientoUno(); DiferenciaUno(); FunA1(); DiferenciaDos(); C1();" style="width: 60%;"> mm</td>
+              </tr>      
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Medición Tapa de centrado</td>
+                <td style="text-align: center;"><input type="number" id="E4" name="E4" value=0 onchange="PromedioUno(); RodamientoUno(); DiferenciaUno(); FunA1(); DiferenciaDos(); C1();" style="width: 60%;"> mm</td>
+              </tr>
+              <tr>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"><b>Diferencia</b></td>
+                <td style="text-align: center;"><span id="D1">0</span> mm </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Promedio</td>
+                <td style="text-align: center;"><span id="P11">0</span> mm </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>Ajustes a instalar</b></td>
+                <td style="text-align: center;"><span id="A1">0</span> mm </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Ajustes Medidos c/Micrometro</td>
+                <td style="text-align: center;"><input type="number" id="A2" name="A2" value=0 onchange="PromedioUno(); RodamientoUno(); DiferenciaUno(); FunA1(); DiferenciaDos(); C1();" style="width: 60%;"> mm</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>Diferencia</b></td>
+                <td style="text-align: center;"><span id="D2">0</span> mm </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Promedio</td>
+                <td style="text-align: center;"><span id="P111">0</span> mm </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>C1</b></td>
+                <td style="text-align: center;"><span id="C1">0</span> mm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-xl-1"></div>
+        <div class="col-xl-5">
+          <!-- Tabla tolerancia C2 -->
+          <table class="table table-bordered">
+            <thead>
+              <!-- Parte 1-->
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Tolerancias</th>
+                <th style="text-align: center">Fuerza utilizando torquimetro</th>
+              </tr>
+              <tr>
+                <th style="text-align: center">C2=</th>
+                <th style="text-align: center;"><input type="number" id="E5" name="E5" value=0 onchange="PromedioDos(); RodamientoDos(); FunA3(); DiferenciaTres(); C2();" style="width: 40%;">/<input type="number" id="E6" name="E6" value=0 onchange="PromedioDos(); RodamientoDos(); FunA3(); DiferenciaTres(); C2();" style="width: 40%;"><br>Promedio = <span id="P2">0</span></th>
+                <th style=" text-align: center;">Digite el rodamiento:<br><input type="text" id="rodamiento2" name="rodamiento2" value=0 onchange="PromedioDos(); RodamientoDos(); FunA3(); DiferenciaTres(); C2();" style="width: 50%; text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();"></th>
+              </tr>
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Seleccione el tornillo:<select class=" form-select" id="prueba2" name="prueba2" onchange="PromedioDos(); RodamientoDos(); FunA3(); DiferenciaTres(); C2();" style="width:100%;">
+                  <option>M12</option>
+                  <option>M16</option>
+                </select></th>
+                <th style="text-align: center;">Puntos de apoyo<select class=" form-select" id="apoyo2" name="apoyo2" style="width:100%;" onchange="PromedioDos(); RodamientoDos(); FunA3(); DiferenciaTres(); C2();">
+                  <option>2</option>
+                  <option>3</option>
+                </select></th>
+              </tr>
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Fuerza = <span id="R2">0</span></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Parte 2-->
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Medición Herat. De ajuste o Profundimetro</td>
+                <td style="text-align: center;"><input type="number" id="E7" name="E7" value=0 onchange="PromedioDos(); RodamientoDos(); FunA3(); DiferenciaTres(); C2();" style="width: 60%;"> mm</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Promedio</td>
+                <td style="text-align: center;"><span id="P22">0</span> mm</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>Ajustes a instalar</b></td>
+                <td style="text-align: center;"><span id="A3">0</span> mm </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Ajustes Medidos c/Micrometro</td>
+                <td style="text-align: center;"><input type="number" id="E8" name="E8" value=0 onchange="PromedioDos(); RodamientoDos(); FunA3(); DiferenciaTres(); C2();" style="width: 60%;"> mm</td>
+                
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>Diferencia</b></td>
+                <td style="text-align: center;"><span id="D3">0</span> mm </td>
+                
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Promedio</td>
+                <td style="text-align: center;"><span id="P222">0</span> mm </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>C2</b></td>
+                <td style="text-align: center;"><span id="C2">0</span> mm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-1"></div>
+        <div class="col-xl-5">
+          <!-- Tabla tolerancia C3 -->
+          <table class="table table-bordered">
+            <thead>
+              <!-- Parte 1-->
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Tolerancias</th>
+                <th style="text-align: center">Fuerza utilizando torquimetro</th>
+              </tr>
+              <tr>
+                <th style="text-align: center">C3=</th>
+                <th style="text-align: center;"><input type="number" id="E9" name="E9" value=0 onchange="PromedioTres(); RodamientoTres(); FunA4(); DiferenciaCuatro(); C3();"style="width: 40%;">/<input type="number" id="E10" name="E10" value=0 onchange="PromedioTres(); RodamientoTres(); FunA4(); DiferenciaCuatro(); C3();" style="width: 40%;"><br>Promedio = <span id="P3">0</span></th>
+                <th style=" text-align: center;">Digite el rodamiento:<br><input type="text" id="rodamiento3" name="rodamiento3" value=0 onchange="PromedioTres(); RodamientoTres(); FunA4(); DiferenciaCuatro(); C3();" style="width: 50%; text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();"></th>
+              </tr>
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Seleccione el tornillo:<select class=" form-select" id="prueba3" name="prueba3" onchange="PromedioTres(); RodamientoTres(); FunA4(); DiferenciaCuatro(); C3();" style="width:100%;">
+                  <option>M12</option>
+                  <option>M16</option>
+                </select></th>
+                <th style="text-align: center;">Puntos de apoyo<select class=" form-select" id="apoyo3" name="apoyo3" style="width:100%;" onchange="PromedioTres(); RodamientoTres(); FunA4(); DiferenciaCuatro(); C3();">
+                    <option>2</option>
+                    <option>3</option>
+                </select></th>
+              </tr>
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Fuerza = <span id="R3">0</span></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Parte 2-->
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Medición Herat. De ajuste o Profundimetro</td>
+                <td style="text-align: center;"><input type="number" id="E11" name="E11" value=0 onchange="PromedioTres(); RodamientoTres(); FunA4(); DiferenciaCuatro(); C3();" style="width: 60%;"> mm</td>
+              </tr>      
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Promedio</td>
+                <td style="text-align: center;"><span id="P33">0</span> mm</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>Ajustes a instalar</b></td>
+                <td style="text-align: center;"><span id="A4">0</span> mm </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Ajustes Medidos c/Micrometro</td>
+                <td style="text-align: center;"><input type="number" id="E12" name="E12" value=0 onchange="PromedioTres(); RodamientoTres(); FunA4(); DiferenciaCuatro(); C3();" style="width: 60%;"> mm</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>Diferencia</b></td>
+                <td style="text-align: center;"><span id="D4">0</span> mm </td>  
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Promedio</td>
+                <td style="text-align: center;"><span id="P333">0</span> mm </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>C3</b></td>
+                <td style="text-align: center;"><span id="C3">0</span> mm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-xl-1"></div>
+        <div class="col-xl-5">
+          <!-- Tabla tolerancia C4 -->
+          <table class="table table-bordered">
+            <thead>
+              <!-- Parte 1-->
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Tolerancias</th>
+                <th style="text-align: center">Fuerza utilizando torquimetro</th>
+              </tr>
+              <tr>
+                <th style="text-align: center">C4=</th>
+                <th style="text-align: center;"><input type="number" id="E13" name="E13" value=0 onchange="PromedioCuatro(); RodamientoCuatro(); FunA5(); DiferenciaCinco(); C4();"style="width: 40%;">/<input type="number" id="E14" name="E14" value=0 onchange="PromedioCuatro(); RodamientoCuatro(); FunA5(); DiferenciaCinco(); C4();" style="width: 40%;"><br>Promedio = <span id="P4">0</span></th>
+                <th style="text-align: center;">Digite el rodamiento:<br><input type="text" id="rodamiento4" name="rodamiento4" value=0 onchange="PromedioCuatro(); RodamientoCuatro(); FunA5(); DiferenciaCinco(); C4();" style="width: 50%; text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();"></th>
+              </tr>
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Seleccione el tornillo:<select class=" form-select" id="prueba4" name="prueba4" onchange="PromedioCuatro(); RodamientoCuatro(); FunA5(); DiferenciaCinco(); C4();" style="width:100%;">
+                  <option>M12</option>
+                  <option>M16</option>
+                </select></th>
+                <th style="text-align: center;">Puntos de apoyo<select class=" form-select" id="apoyo4" name="apoyo4" style="width:100%;" onchange="PromedioCuatro(); RodamientoCuatro(); FunA5(); DiferenciaCinco(); C4();">
+                  <option>2</option>
+                  <option>3</option>
+                </select></th>
+              </tr>
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Fuerza = <span id="R4">0</span></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Parte 2-->
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Medición Herat. De ajuste o Profundimetro</td>
+                <td style="text-align: center;"><input type="number" id="E15" name="E15" value=0 onchange="PromedioCuatro(); RodamientoCuatro(); FunA5(); DiferenciaCinco(); C4();" style="width: 60%;"> mm</td>
+              </tr>      
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Promedio</td>
+                <td style="text-align: center;"><span id="P44">0</span> mm</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>Ajustes a instalar</b></td>
+                <td style="text-align: center;"><span id="A5">0</span> mm </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Ajustes Medidos c/Micrometro</td>
+                <td style="text-align: center;"><input type="number" id="E16" name="E16" value=0 onchange="PromedioCuatro(); RodamientoCuatro(); FunA5(); DiferenciaCinco(); C4();" style="width: 60%;"> mm</td>
+                
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>Diferencia</b></td>
+                <td style="text-align: center;"><span id="D5">0</span> mm </td>
+                
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;">Promedio</td>
+                <td style="text-align: center;"><span id="P444">0</span> mm </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="text-align: center;"><b>C4</b></td>
+                <td style="text-align: center;"><span id="C4">0</span> mm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </body>
+  <footer style="text-align: center;">
+    <h6>Desarrollado por Ramiro Mahecha. <br>
+      Todos los derechos reservados. <br>
+      2018.
+    </h6> 
+  </footer>
+</html>
