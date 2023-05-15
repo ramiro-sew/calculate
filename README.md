@@ -1,2 +1,1 @@
-# calculate
-SEW calculate sheet
+Project migrated from Ruby to native HTML/JS
